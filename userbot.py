@@ -31,6 +31,7 @@ def login():
     config.set('API', 'API_hash', f"{resid}")
     with open('loader/config.ini', 'w') as configfile:
         config.write(configfile)
+        sleep(1)
     while True:
         try:
             config.read('loader/config.ini')
@@ -38,6 +39,7 @@ def login():
             api_id = int(res)
             api_hash = resid
             clientTG = TGclient()
+            clientTG.client = TelegramClient('loader/user.session', api_id, api_hash)
             client = clientTG.client
             client.start()
             print("Вход выполнен!")
