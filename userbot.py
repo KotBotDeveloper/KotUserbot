@@ -39,6 +39,7 @@ def login():
             api_id = int(res)
             api_hash = resid
             clientTG = TGclient()
+            clientTG.client.disconnect()
             clientTG.client = TelegramClient('loader/user.session', api_id, api_hash)
             client = clientTG.client
             client.start()
